@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Change Theme</title>
+
+	<style type="text/css">
+		body.dark { background-color: black; color: white; }
+		body.light { background-color: white; color: black; }
+	</style>
+</head>
+<body>
+
+	<button onclick="setTheme('dark')">Dark Mode</button>
+	<button onclick="setTheme('light')">Light Mode</button>
+
+	<script>
+		function setTheme(mode)
+		{
+			document.body.className = mode;
+			localStorage.setItem("theme",mode);
+		}
+
+		window.onload = function()
+		{
+			let saveTheme = localStorage.getItem("theme");
+
+			if(saveTheme)
+			{
+				document.body.className = saveTheme;
+			}
+		}
+	</script>
+
+</body>
+</html>

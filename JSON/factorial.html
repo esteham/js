@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calaulate Factorial</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+		const number = parseInt(prompt("Enter a Positive Integer"));
+
+		if(number < 0)
+		{
+			document.write("Error! factorial for negetive number does not exists");
+		}
+
+		else if(number == 0)
+		{
+			document.write(`The factorial of ${number} is 1`);
+		}
+
+		else
+		{
+			let fact = 1;
+			for(i = 1; i <= number; i++)
+			{
+				fact*= i;	
+			}
+
+			document.write(`The factorial of ${number} is ${fact}`);
+		}
+	</script>
+
+</body>
+</html>

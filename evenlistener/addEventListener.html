@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Adding Event Listener Ex.</title>
+</head>
+<body>
+	<button id="btn">Click</button>
+
+	<!-- <script type="text/javascript">
+		var a = (num1, num2)=>
+		{
+			var x = Number(prompt("Enter Number 1"));
+			var y = Number(prompt("Enter Number 2"));
+
+			var z = x + y;
+			alert("Total is:"+z);
+		}
+
+		
+	</script> -->
+
+	<script type="text/javascript">
+		document.getElementById("btn").addEventListener('click',(num1, num2)=>{
+
+			var x = Number(prompt("Enter Number 1"));
+			var y = Number(prompt("Enter Number 2"));
+			var z = x + y;
+			alert("Total is:"+z);
+
+		});
+	</script>
+
+
+</body>
+</html>

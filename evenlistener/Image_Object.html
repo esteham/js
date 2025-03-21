@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Image Object Ex.</title>
+	<style type="text/css">
+		.result
+		{
+			font-size: 18px;
+			font-weight: bold;
+			color: purple;
+		}
+
+		body
+		{
+			font-family: "Arial", sans-serif;
+		}
+	</style>
+</head>
+<body>
+
+	<h1>Loading Image...</h1>
+	<div class="result">
+		
+	</div>
+
+	<button class="btn">see notice</button>
+	<h4>***Click the button above to load the image...</h4>
+
+	<script>
+		var resEle = document.querySelector(".result");
+		var btnEle = document.querySelector(".btn");
+
+		var newImage = new Image(500,300);
+
+		newImage.src = "images/ball.jpg";
+
+		btnEle.addEventListener('click',()=>{
+
+			resEle.appendChild(newImage);
+		});
+
+	</script>
+
+</body>
+</html>

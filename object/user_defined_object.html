@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>User Defined Object</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var employees = {
+
+						id: 102,
+						name: "Hasanuzzaman",
+						dept: "Admin",
+						salary: 40000
+						};
+		//document.write(employees.id+" "+employees.name+" "+employees.dept);// It gives correct output.
+
+		var emp = new employees();// It gives Type Error because employees is not a constructor.
+		document.write(emp.id+" "+emp.name+" "+emp.dept);
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS Promise</title>
+</head>
+<body>
+	<!-- <script type="text/javascript">
+		let testPromise = new Promise((resolve, reject) =>{
+			 let success = true;
+
+			setTimeout(() =>{
+
+				if(success)
+				{
+					resolve("Successfully Done!");
+				}
+
+				else
+				{
+					reject("Not success");
+				}
+				
+			}, 2000);
+
+		});
+
+		testPromise.then(response => alert(response)).catch(error => console.log("Unknown error occured"));
+	</script> -->
+
+	<!-- <script type="text/javascript">
+		let myPromise = new Promise((resolve, reject) => {
+
+			setTimeout(() =>{
+
+				resolve(10)
+			},1000);
+
+		});
+
+		myPromise.then(number => {
+
+			alert(number);
+			return number * 2;
+		}).then(number => {
+
+			alert(number);
+			return number * 3;
+		}).then( number => {
+
+			alert(number);
+		}).catch(error => alert("Error Occured!"));
+	</script> -->
+
+	<!-- <script type="text/javascript">
+		function getNumber()
+		{
+			return new Promise( resolve =>{
+
+				setTimeout(()=> resolve(10), 1000);
+			});
+		}
+
+		async function processNumber()
+		{
+			let number = await getNumber();
+			alert(number);
+
+			number *=2;
+
+			alert(number);
+
+			number *=3;
+			alert(number);
+		}
+
+		processNumber();
+
+	</script> -->
+
+	<script type="text/javascript">
+		async function fetchData()
+		{
+			try 
+			{
+				let response = await fetch("https://jsonplaceholder.typicode.com/posts/1");
+				let data = await response.json();
+
+				console.log(data);
+			} 
+			catch(error) 
+			{
+				// statements
+				console.log("Error occured!", error);
+			}
+		}
+
+		fetchData();
+	</script>
+
+</body>
+</html>

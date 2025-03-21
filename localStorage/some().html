@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>array some() method ex.</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+		/*const numbers = [3,5,8,7,4,1,15];
+
+		const result = numbers.some(num => num > 10);
+
+		console.log(result);*/
+
+		const users = [
+						{name: "Asad", role: "user"},
+						{name: "John", role: "editor"},
+						{name: "Kamal", role: "admin"}
+					  ];
+		const isAdmin = users.some(user => user.role ===  "admin");
+		console.log(isAdmin);
+	</script>
+
+</body>
+</html>

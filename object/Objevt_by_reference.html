@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Create Object by Reference</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function Employee(id, name, dept, salary)
+		{
+			this.id = id;
+			this.name = name;
+			this.dept = dept;
+			this.salary = salary;
+		}
+
+		var emp1 = new Employee(101,"Hasanuzzaman","Admin",40000);
+		var emp2 = new Employee(102,"Rahim","HR",35000);
+
+		document.write(emp1.id+" "+emp1.name+" "+emp1.dept+" "+"<br>");
+		document.write(emp2.id+" "+emp2.name+" "+emp2.dept+" "+emp2.salary);
+	</script>
+
+</body>
+</html>

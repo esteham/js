@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>User Profile</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/css/bootstrap.min.css" integrity="sha512-rt/SrQ4UNIaGfDyEXZtNcyWvQeOq0QLygHluFQcSjaGB04IxWhal71tKuzP6K8eYXYB6vJV4pHkXcmFGGQ1/0w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+	<style type="text/css">
+		body
+		{
+			font-family: Arial, sans-serif;
+			transition: background-color 0.5s, font-family 0.5s;
+		}
+
+		.hidden
+		{
+			display: none;
+		}
+
+		textarea
+		{
+			width: 100%;
+			height: 150px;
+			padding-bottom: 10px;
+			font-size: 16px;
+		}
+	</style>
+</head>
+<body class="container mt-5">
+
+	<div id="loginForm" class="text-center">
+		<h2>Login</h2>
+		<input type="email" name="email" id="email" class="form-control mb-2" placeholder="Enter Email" required>
+		<input type="password" name="password" id="password" class="form-control mb-2" placeholder="Enter Password" required>
+		<button class="btn btn-primary" onclick="login()">Login</button>
+		<p id="loginError" class="text-danger"></p>
+	</div>
+
+	<div id="themeSettings" class="hidden">
+		<h2 class="text-center">Customize Your Profile</h2>
+		<div class="form-group">
+			<label>Background Color:</label>
+			<select id="bgColor" class="form-control">
+				<option value="white">White</option>
+				<option value="lightblue">Light Blue</option>
+				<option value="lightgreen">Light Green</option>
+				<option value="lightgray">Light Gray</option>
+				<option value="red">Red</option>
+			</select>
+		</div>
+
+		<div class="form-group">
+			<label>Font Style:</label>
+			<select id="fontStyle" class="form-control" onchange="applyFontToTextArea()">
+				<option value="Arial">Arial</option>
+				<option value="Courier New">Courier New</option>
+				<option value="Georgia">Georgia</option>
+				<option value="Times New Roman">Times New Roman</option>
+			</select>
+		</div>
+
+		<div class="form-group">
+			<label>Write Your Text:</label>
+			<textarea id="textArea" class="form-control"></textarea>
+		</div>
+
+		<button class="btn btn-success" onclick="saveTheme()">Save Settings</button>
+		<button class="btn btn-danger" onclick="logout()">Logout</button>
+	</div>
+
+	<script>
+		const users = 
+		{
+			"araman666@gmail.com": "123456",
+			"kamal@gmail.com": "111111"
+		};
+
+		function setCookie(name, value, days)
+		{
+			let expires = "";
+
+			if(days)
+			{
+				let date = new Date();
+				date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+				expires = " ; expires=" + date.toUTCString();				
+			}
+
+			document.cookie = name + "=" + encodeURIComponent(value) + "; path=/" + expires;
+		}
+
+		function getCookie(name)
+		{
+			let cookies = document.cookie.split("; ");
+
+			for( let cookie of cookies )
+			{
+				let [key, value] = cookie.split("=");
+				
+				if(key == name) return decodeURIComponent(value);				
+			}
+
+			return null;
+		}
+
+		function login()
+		{
+			let email = document.getElementById("email").value;
+			let password = document.getElementById("password").value;
+
+			if(users[email] && users[email] == password)
+			{
+				setCookie("loggedInUser", email, 7);
+				//theme loading function call
+				loadUserTheme(email);
+				document.getElementById("loginForm").classList.add("hidden");
+				document.getElementById("themeSettings").classList.remove("hidden");
+			}
+
+			else
+			{
+				document.getElementById("loginError").innerText = "Invalid email or password!";
+			}
+		}
+
+		function saveTheme()
+		{
+			let email = getCookie("loggedInUser");
+
+			if(!email) return;
+
+			let bgColor = document.getElementById("bgColor").value;
+			let fontStyle = document.getElementById("fontStyle").value;
+			let textContent = document.getElementById("textArea").value;
+
+			setCookie(email + "_bgColor", bgColor,7);
+			setCookie(email + "_fontStyle", fontStyle, 7);
+			setCookie(email + "_textContent", textContent, 7);
+			applyTheme(bgColor,fontStyle);
+
+
+		}
+
+		function applyTheme(bgColor, fontStyle)
+		{	
+			document.body.style.backgroundColor = bgColor;
+			document.body.style.fontFamily = fontStyle;
+			document.getElementById("textArea").style.fontFamily = fontStyle;
+		}
+
+		function loadUserTheme(email)
+		{
+			let bgColor = getCookie(email + "_bgColor") || "white";
+			let fontStyle = getCookie(email + "_fontStyle") || "Arial";
+			let textContent = getCookie(email + "_textContent") || "";
+
+			document.getElementById("bgColor").value = bgColor;
+			document.getElementById("fontStyle").value = fontStyle;
+			document.getElementById("textArea").value = textContent;
+
+			applyTheme(bgColor,fontStyle);
+			applyFontToTextArea();
+
+		}
+
+		function applyFontToTextArea()
+		{
+			let selectedText = document.getElementById("fontStyle").value;
+			document.getElementById("textArea").style.fontFamily = selectedText;
+		}
+
+		function logout()
+		{
+			let email = getCookie("loggedInUser");
+
+			if(!email) return;
+
+			setCookie("loggedInUser","",-1);
+			applyTheme("white","Arial");
+			document.getElementById("bgColor").value = "white";
+			document.getElementById("fontStyle").value = "Arial";
+			document.getElementById("textArea").value = "";
+			document.getElementById("loginForm").classList.remove("hidden");
+			document.getElementById("themeSettings").classList.add("hidden");
+		}
+
+		window.onload = function()
+		{
+			let loggedInUser = getCookie("loggedInUser");
+
+			if(loggedInUser)
+			{
+				document.getElementById("loginForm").classList.add("hidden");
+				document.getElementById("themeSettings").classList.remove("hidden");
+				loadUserTheme(loggedInUser);
+			}
+
+			else
+			{
+				applyTheme("white","Arial");
+			}
+		};
+
+
+	</script>
+</body>
+</html>

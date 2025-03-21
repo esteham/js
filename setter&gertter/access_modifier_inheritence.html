@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Access Modifier & Inheritence</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+		class User
+		{
+			#password; //Private member (encapsulated)
+
+			constructor(username, email, password)
+			{
+				this.username = username;
+				this.email = email;
+				this.#password = password;
+			}
+
+			login(userName, password)
+			{
+				if(userName == this.username && password == this.#password)
+				{
+					console.log("Login Successfull!");
+				}
+
+				else
+				{
+					console.log("Authentication Failed");
+				}
+			}
+
+			register()
+			{
+				console.log(this.username+"is now registered");
+			}
+
+			setPassword(newPassword)
+			{
+				this.#password = newPassword;
+			}
+		}
+
+		/*let john = new User('John','john@gmail.com','123456');
+
+		john.register();
+
+		john.login("kamal",123456);
+
+		document.write(john.password);*/
+
+		class Member extends User
+		{
+			constructor(username, email, password,memberpackage)
+			{
+				super(username,email,password);
+				this.memberpackage = memberpackage;
+			}
+
+			getPackage()
+			{
+				document.write(this.username+"has subscribed to the"+this.memberpackage+"package");
+			}
+		}
+
+		let sagor = new Member("sagor","sagor@gmail.com","123456","Standard");
+		sagor.login("Sagor",123456);
+		document.write(sagor.username);
+		document.write(sagor.password);
+
+		sagor.getPackage();
+	</script>
+
+</body>
+</html>

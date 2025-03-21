@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ES6 Syntax</title>
+</head>
+<body>
+
+	<!-- <script type="text/javascript">
+		//Template Literals
+
+		let name = "John";
+		let message = `Hello, ${name}`;
+		document.write(message);
+
+		let multiline = `This is
+		a multiline 
+		message.`;
+
+		document.write(multiline);
+
+		function greetings(name = "Guest")
+		{
+			return `Hello, ${name}`;
+		}
+
+		document.write(greetings());
+		document.write(greetings("Asad"));
+	</script> -->
+
+	<!-- <script type="text/javascript">
+		//Destructuring
+
+		let [a,b,c] = [10,20,30];
+		document.write(a,b,c);
+
+		//Object Destructure
+
+		let person = {name: "Asad", age: 25};
+		let {name, age} = person;
+		document.write(name, age);
+	</script> -->
+
+	<!-- <script type="text/javascript">
+		//Spread Operator (...)
+
+		let arr = [10,20,30];
+		let copyarr = arr; //It will share reference
+
+		copyarr.push(40);
+		console.log(copyarr);
+
+		let arr2 = [10,20,30];
+		let copy = [...arr2];
+
+		copy.push(40);
+		console.log(arr2);
+
+		let arr3 = [1,2,3];
+		let arr4 = [4,5,6];
+
+		let merge = [...arr3, ...arr4];
+		console.log(merge);
+
+		let numbers = [1,2,3];
+		let updatenumbers = [0,...numbers,4];
+		console.log(updatenumbers);
+
+		function sum(a,b,c)
+		{
+			return a+b+c;
+		}
+
+		let nums = [1,2,3];
+		console.log(sum(...nums));
+
+		let person1 = {name: "Asad", age: 35};
+		let person2 = {...person1};
+
+		person2.age = 50;
+		console.log(person1.age);
+
+		let updateperson1 = {...person1, city: "Dhaka", age:45};
+		console.log(updateperson1);
+
+		let xy = ()=>
+		{
+			console.log(arguments);//Gives reference error
+		}
+
+		xy(2,4,5);
+
+		let t = (...n)=>
+		{
+			console.log(n);
+		}
+
+		t(10,20,30,40);
+	</script> -->
+
+	<script type="text/javascript">
+		var a = parseInt(prompt("First Number"));
+		var b = parseInt(prompt("Second Number"));
+		var c = parseInt(prompt("Third Number"));
+
+		if(a < b)
+		{
+			temp = a;
+			a = b;
+			b = temp;
+		}
+
+		if(a < c)
+		{
+			temp = a;
+			a = c;
+			c = temp;
+		}
+
+		if(b < c)
+		{
+			temp = b;
+			b = c;
+			c = temp;
+		}
+
+		document.write(a+", "+b+", "+c);
+	</script>
+
+</body>
+</html>

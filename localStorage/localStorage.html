@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>localstorage ex.</title>
+</head>
+<body>
+
+	<script>
+
+		//localStorage.setItem("key","value")
+		
+		//let dta = localStorage.getItem("key")
+
+		//localStorage.removeItem("key")
+
+		//localStorage.clear()
+
+		localStorage.user = JSON.stringify({name: "Kamal"});
+		var user = JSON.parse(localStorage.user);
+		alert(user.name);
+	</script>
+
+</body>
+</html>

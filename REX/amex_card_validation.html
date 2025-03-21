@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AMEX Card Validation</title>
+	<style type="text/css">
+		li
+		{
+			list-style-type: none;
+			font-size: 16px;
+		}
+
+		input
+		{
+			font-size: 20px;
+		}
+
+		input:focus
+		{
+			background-color: lightblue;
+		}
+
+		.container
+		{
+			margin: auto;
+			padding-top: 10px;
+			padding-bottom: 10px;
+			width: 400px;
+			background-color: lightgreen;
+			border: 1px solid silver;
+		}
+	</style>
+
+	<script type="text/javascript">
+		
+		function cardnumber(para)
+		{
+			var cardno = /^(?:3[47][0-9]{13})$/;
+
+			if(para.value.match(cardno))
+			{
+				document.write("Thank you for purchasing by your AMEX Card");
+			}
+
+			else
+			{
+				alert("Not a valid American Express Card");
+			}
+		}
+
+	</script>
+</head>
+<body onload="document.form1.text1.focus()">
+
+	<div class="container">
+		<h2>Input Credit Card Number</h2>
+		<form name="form1">
+			<ul>
+				<li>
+					<input type="text" name="text1">
+				</li>
+				<li>&nbsp;</li>
+				<li>
+					<input type="submit" name="submit" value="Submit" onclick="cardnumber(document.form1.text1)">
+				</li>
+			</ul>
+		</form>
+	</div>
+
+</body>
+</html>

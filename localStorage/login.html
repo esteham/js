@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>User Registration</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/css/bootstrap.min.css" integrity="sha512-rt/SrQ4UNIaGfDyEXZtNcyWvQeOq0QLygHluFQcSjaGB04IxWhal71tKuzP6K8eYXYB6vJV4pHkXcmFGGQ1/0w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/js/bootstrap.min.js" integrity="sha512-7rusk8kGPFynZWu26OKbTeI+QPoYchtxsmPeBqkHIEXJxeun4yJ4ISYe7C6sz9wdxeE1Gk3VxsIWgCZTc+vX3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+
+	<div class="container">
+		<h2>User Login</h2>
+		<form action="#">			
+
+			<div class="form-group">
+				<label>Email Address:</label>
+				<input type="email" name="email" id="email" class="form-control" placeholder="Enter Email Address">
+			</div>
+
+			<div class="form-group">
+				<label>Password:</label>
+				<input type="Password" name="password" id="password" class="form-control" placeholder="Enter Password">
+			</div>
+
+			<button type="button" id="save_btn" class="btn btn-primary" onclick="saveData()">Submit</button>
+		</form>
+	</div>
+
+	<script type="text/javascript">
+		
+		let name = localStorage.getItem('name')?localStorage.getItem('name'):'';
+		console.log(name);
+
+		if(name !='')
+		{
+			alert("Please visit the protected page");
+			window.location.href = "theme.html";
+		}
+
+		function saveData()
+		{
+			let email, psw;
+
+			email = document.getElementById("email").value;
+			psw = document.getElementById("password").value;
+
+			let user_records = new Array();
+
+			user_records = JSON.parse(localStorage.getItem("users"))?JSON.parse(localStorage.getItem("users")):[];
+
+			if(user_records.some((v)=>{ return v.email == email && v.psw == psw}))
+			{
+				alert("Login Success");
+				let current_user = user_records.filter((v)=>{ return v.email == email && v.psw == psw})[0];
+
+				localStorage.setItem('name',current_user.name);
+				localStorage.setItem('email', current_user.email);
+				window.location.href = "theme.html";
+			}
+			else
+			{
+				alert("Login Failed");
+			}
+		}
+	</script>
+
+</body>
+</html>

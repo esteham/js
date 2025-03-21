@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Date Object Example</title>
+</head>
+<body>
+	Current Time:<span id="time"></span><br>
+	<button type="button" onclick="stop()">stop</button>
+
+<!-- 	<script type="text/javascript">
+		var dt = new Date();
+		alert(dt);
+	</script> -->
+
+	<!-- <script type="text/javascript">
+		var time = new Date();
+		time.getTime();
+		alert(time);
+	</script> -->
+
+	<!-- <script type="text/javascript">
+		var birthday = new Date(1981, 11, 25);
+		birthday.getMonth();
+		alert(birthday);
+	</script> -->
+
+	<script type="text/javascript">
+		
+		window.onload = function()
+		{
+			getTime();
+		}
+
+		function getTime()
+		{
+			var today = new Date();
+			var h = today.getHours();
+			var m = today.getMinutes();
+			var s = today.getSeconds();
+
+			m = checkTime(m);
+			s = checkTime(s);
+			document.getElementById("time").innerHTML = h+":"+m+":"+s;
+		}
+
+		var x = setInterval("getTime()", 1000);
+
+
+		function checkTime(i)
+		{
+			if(i < 10)
+			{
+				i = "0"+i;
+			}
+
+			return i;
+		}
+
+		function stop()
+		{
+			clearInterval(x);
+		}
+	</script>
+
+</body>
+</html>

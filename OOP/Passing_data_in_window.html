@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Data Passing throygh Window</title>
+
+	<script type="text/javascript">
+		function dyn_window()
+		{
+			var title = "My Title";
+
+			var name = document.f.txtName.value;
+			var address = document.f.txtAddress.value;
+			var courses = document.f.txtCourses.value;
+			var sex = "";
+			var subjects = "";
+
+			for(var i = 0; i < document.f.rdoSex.length; i++)
+			{
+				if(document.f.rdoSex[i].checked)
+				{
+					sex = document.f.rdoSex[i].value;
+				}
+			}
+
+			for(var j = 0; j<document.f.chkSubject.length; j++)
+			{
+				if(document.f.chkSubject[j].checked)
+				{
+					subjects+=document.f.chkSubject[j].value;
+				}
+			}
+
+			var a = open('','','width=400, height=350');
+
+			with(a.document)
+			{
+				write("<html>");
+				write("<head><title>"+title+"</title></head>");
+				write("<body>");
+				write("<div style='border: 1px solid black;'>Name:"+name+"<br><img src='images/ball.jpg' width='50' height = '50'></div><br>");
+				write("Address:"+address+"<br>");
+				write("Courses:"+courses+"<br>");
+				write("Gender:"+sex+"<br>");
+				write("Subjects:"+subjects+"<br>");
+				write("<input type='button' value='close' onclick='self.close();'>");
+				write("<input type='button' value='Print' onclick='self.print();'>");
+				write("</body>");
+				write("</html>");
+
+			}
+		}
+	</script>
+</head>
+<body>
+
+	<form method="post" name="f" style="width: 200px; margin: 0px auto; border: 1px solid black; padding-right: 10px;">
+		
+		<div>
+			Name:<br>
+			<input type="text" name="txtName">
+		</div>
+
+		<div>
+			Address:<br>
+			<textarea name="txtAddress"></textarea>
+		</div>
+
+		<div>
+			Courses:<br>
+			<select name="txtCourses">
+				<option value="MBA">M.B.A</option>
+				<option value="BBA">B.B.A</option>
+				<option value="CSE">C.S.E</option>
+				<option value="EEE">E.E.E</option>
+			</select>
+		</div>
+
+		<div>
+			Gender:<br>
+			Male<input type="radio" name="rdoSex" value="male">
+			Female<input type="radio" name="rdoSex" value="female">
+		</div>
+
+		<div>
+			Subjects:<br>
+			English<input type="checkbox" name="chkSubject" value="English">
+			Bangla<input type="checkbox" name="chkSubject" value="Bangla">
+		</div>
+
+		<div>
+			<input type="button" name="btnObject" value="Submit" onclick="dyn_window()">
+		</div>
+	</form>
+
+</body>
+</html>

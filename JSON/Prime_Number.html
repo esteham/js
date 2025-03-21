@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Prime Number Evaluation</title>
+</head>
+<body>
+	<script>
+		function primeNumber() 
+		{	
+			 var number = document.getElementById("prime").value;
+			 var checkprime = true;
+
+			 if(number == 1)
+			 {
+			 	document.write("1 is not a prime or non-prime number");
+			 }
+
+			 else if(number > 1)
+			 {
+			 	for(i = 2; i < number; i++)
+			 	{
+			 		if(number % i == 0)
+			 		{
+			 			checkprime = false;
+			 			break;
+			 		}
+			 	}
+
+			 	if(checkprime)
+			 	{
+			 		document.write(`${number} is a prime number`);
+			 	}
+
+			 	else
+			 	{
+			 		document.write(`${number} is no a prime number`);
+			 	}
+			 }
+
+			 else
+			 {
+			 	document.write("Zero or negetive number cannot be a prime number");
+			 }
+
+		}
+	</script>
+
+	<form id="form1">
+		<input type="text" name="prime" id="prime">
+		<button type="button" onclick="primeNumber()">Check</button>
+	</form>
+
+</body>
+</html>

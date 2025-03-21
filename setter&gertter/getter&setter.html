@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Getter & Setter Method</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+
+		class Students
+		{
+			constructor()
+			{
+				var name;
+				var marks;
+			}
+
+			setName(name) //setter method
+			{
+				this.name = name;
+			}
+
+			setMarks(marks) //setter method
+			{
+				this.marks = marks;
+			}
+
+			getname() //getter method
+			{
+				return this.name;
+			}
+
+			getMarks() //getter method
+			{
+				return this.marks;
+			}
+		}
+
+		var s = new Students();
+
+		s.setName("kamal");
+		s.setMarks(90);
+
+		var s2 = new Students();
+
+		s2.setName("Hasan");
+		s2.setMarks(75);
+
+		document.write("The name is:"+s.getname()+"<br>");
+		document.write("His mark is:"+s.getMarks()+"<br>");
+
+		document.write("<br>");
+
+		document.write("The name is:"+s2.getname()+"<br>");
+		document.write("His mark is:"+s2.getMarks()+"<br>");
+	</script>
+
+</body>
+</html>

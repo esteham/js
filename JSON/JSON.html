@@ -1,0 +1,69 @@
+
+
+<!-- JSON(javaScript Object Notation)
+	--Data interchange format
+	--Carries data to various platform
+	--It supports almost all language and platforms
+	--Data read(retrieve) and write(convert) is very easy in JSON format. 
+-->
+
+<script>
+	//JSON Data
+	//"name": "John"
+
+	//JSON Object
+	//{"name": "John", "age": 35}
+
+	//JSON Array
+	//["apple","Orange","Banana"]
+
+	//JSON array containing objects	
+	/*[
+
+		{"name":"John", "age":35},
+		{"name":"Peter", "age":24},
+		{"name":"Mark", "age":45}
+	]*/
+
+	//Accessing JSON Data
+
+	/*const data = {
+
+				"name": "John",
+				"age": 35,
+				"hobbies": {
+
+					"reading": true,
+					"gaming": false,
+					"sports": "football"
+				},
+
+				"class": ["javascript","HTML","CSS"]
+	}
+
+	console.log(data.name);
+	console.log(data.hobbies);
+	console.log(data.hobbies.sports);
+	console.log(data.class[1]);
+	*/
+
+	const jsonData = '{"name": "John", "age": 35}';
+
+	const obj = JSON.parse(jsonData);
+	console.log(obj);
+
+	//Converting JavaScript object to JSON object
+
+	const jsonData2 = {name:"John",age:35};
+	const obj2 = JSON.stringify(jsonData2);
+	console.log(obj2);
+
+	//++i(Pre-increment)
+	//i++(Post-increment)
+
+	let a = 5;
+	let b = a++;
+	document.write(a+"<br>");
+	document.write(b+"<br>");
+	document.write(b);
+</script>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Trainee Data Form</title>
+</head>
+<body>
+
+	<form id="traineeform">
+		<label>Name:</label><br>
+		<input type="text" name="name" id="name"><br>
+		<label>Contact:</label><br>
+		<input type="text" name="contact" id="contact"><br>
+		<label>Address:</label><br>
+		<textarea id="address" name="address" rows="4" cols="50"></textarea><br>
+		<label>Sex:</label><br>
+		<input type="radio" name="sex" id="male" value="Male">
+		<label>Male</label>
+		<input type="radio" name="sex" id="female" value="Female">
+		<label>Female</label><br>
+
+		<label>Select Course:</label><br>
+		<input type="checkbox" name="course" id="nt" value="NT">
+		<label>NT</label><br>
+		<input type="checkbox" name="course" id="wdpf" value="WDPF">
+		<label>WDPF</label><br>
+		<input type="checkbox" name="course" id="ddd" value="DDD">
+		<label>DDD</label><br>
+		<input type="checkbox" name="course" id="esad" value="ESAD">
+		<label>ESAD</label><br>
+
+		<label>Select Location:</label><br>
+		<select id="location" name="location">
+			<option value="Banani">Banani</option>
+			<option value="Dhanmondi">Dhanmondi</option>
+			<option value="Mirpur">Mirpur</option>
+		</select><br><br>
+
+		<button type="button" onclick="submitForm()">Submit</button>
+
+	</form>
+
+	<script>
+		class Trainee
+		{
+			constructor(name, contact, address, sex, courses, location)
+			{
+				this.name = name;
+				this.contact = contact;
+				this.address = address;
+				this.sex = sex;
+				this.courses = courses;
+				this.location = location;
+			}
+
+			getFormattedData()
+			{
+				return `Name:${this.name }\nContact:${this.contact }\nAddress:${this.address}\nSex:${this.sex}\nCourses:${this.courses.join(",")}\nLocation:${this.location}`;
+			}
+		}
+
+		function submitForm()
+		{
+			const name = document.getElementById("name").value;
+			const contact = document.getElementById("contact").value;
+			const address = document.getElementById("address").value;
+			const sex = document.querySelector('input[name="sex"]:checked').value;
+
+			const courses = Array.from(document.querySelectorAll('input[name="course"]:checked')).map(course=>course.value);
+
+			const location = document.getElementById("location").value;
+
+			const trainee = new Trainee(name, contact, address, sex, courses, location);
+
+			const formattedData = trainee.getFormattedData();
+
+			const newWindow = window.open("","_blank");
+			newWindow.document.write("<pre>"+formattedData+"</pre>");
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Polymorphism Example</title>
+</head>
+<body>
+	<script type="text/javascript">
+		class Animal
+		{
+			constructor(name)
+			{
+				this.name = name;
+			}
+
+			eats()
+			{
+				console.log(this.name+"eats food");
+			}
+		}
+
+		class Aligator extends Animal
+		{
+			eats() //method overriding
+			{
+				super.eats();
+				console.log(this.name+"eats fishes");
+			}
+
+		}
+
+		var murphy = new Aligator("murphy");
+		murphy.eats();
+	</script>
+
+</body>
+</html>

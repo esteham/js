@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>window objects method</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function simpleWindow()
+		{
+			var win = window.open("polymorphism2.html","_blank","width=400, height=300");
+
+		}
+
+		function closeWin()
+		{
+			window.close();
+		}
+	</script>
+
+	<button type="button" onclick="simpleWindow()">Open PolymorphismEx.</button>
+	<button type="button" onclick="window.print()">Print</button>
+	<button type="button" onclick="closeWin()">Close</button>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>User Login</title>
+	<style type="text/css">
+		label
+		{
+			width: 150px;
+			font-weight: bold;
+		}
+
+		input[type="submit"]
+		{
+			margin-top: 20px;
+		}
+	</style>
+</head>
+<body>
+
+	<h1 style="color: green;">User Login</h1>
+	<label>User Name</label><br>
+	<input type="text" name="uname" id="uname" value=""><br>
+	<span id="blankmsg" style="color: red;"></span>
+	<label>Password</label><br>
+	<input type="Password" name="pass" id="pass" value="">
+	<span id="charmsg" style="color: red;"></span><br>
+	<input type="submit" name="submit" id="submit" value="Login" onclick="validate()">
+
+	<script type="text/javascript">
+		
+		var attempt = 3;
+
+		function reload()
+		{
+			location.reload();
+		}
+
+		function validate()
+		{
+			var username = document.getElementById("uname").value;
+			var password = document.getElementById("pass").value;
+
+			if(username == 'araman' && password == '123456')
+			{
+				alert("Login Successfull");
+				window.location = 'http://www.rokomari.com';
+				return true;
+			}
+
+			else
+			{
+				attempt--;
+				alert("Invalid username or Password, you have left"+attempt);
+
+				if(attempt == 0)
+				{
+					document.getElementById("uname").disabled = true;
+					document.getElementById("pass").disabled = true;
+					document.getElementById("submit").disabled = true;
+
+					setTimeout(reload, 5000);
+				}
+			}
+		}
+	</script>
+
+</body>
+</html>
